@@ -95,6 +95,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="core\features\aimbot\aimbot.cpp" />
+    <ClCompile Include="core\features\aimbot\autowall.cpp" />
     <ClCompile Include="core\features\aimbot\backtracking.cpp" />
     <ClCompile Include="core\features\hitmark\events.cpp" />
     <ClCompile Include="core\features\hitmark\hitmarker.cpp" />

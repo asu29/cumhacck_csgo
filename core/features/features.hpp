@@ -2,6 +2,8 @@
 #include "../menu/config.hpp"
 #include "../../dependencies/common_includes.hpp"
 #include "../../security/cl_junkcode.hpp"
+#include "../../dependencies/math/math.hpp"
+#include "../../source-sdk/classes/c_usercmd.hpp"
 
 namespace misc 
 {
@@ -29,6 +31,8 @@ namespace misc
 	void preservekillfeed(bool roundStart);
 	void sv_pure();
 	void autopistol(c_usercmd* cmd);
+
+
 
 	namespace hitmarker 
 	{

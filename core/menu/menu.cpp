@@ -541,7 +541,7 @@ void menu::draw()
 				zgui::text("tsuda kageyu for minhook");
 				zgui::text("namazso for nskinz");
 				zgui::text("brofield for simpleini");
-				zgui::text("====#3037 for help with jb");
+				zgui::text("Search#3037 for help with jb");
 				zgui::text("random snippets from unknowncheats");
 				zgui::text("a few leaked sources");
 				zgui::text("everyone who submitted bug reports ");
