@@ -311,7 +311,11 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 
 		if (variables.visuals.watermark)
 		{
-			visuals::watermark();
+			auto red = variables.visuals.clr_watermark[0] * 255;
+			auto green = variables.visuals.clr_watermark[1] * 255;
+			auto blue = variables.visuals.clr_watermark[2] * 255;
+			auto alpha = variables.visuals.clr_watermark[3] * 255;
+			render::draw_text_string(0, 0, render::fonts::watermark_font, "cum hacck", false, color(red, green, blue, alpha));
 		}
 
 		if (interfaces::engine->is_in_game() && interfaces::engine->is_connected() && csgo::local_player)
