@@ -309,7 +309,7 @@ void config::load()
 
 	variables.misc.hitmarker = cfg.GetBoolValue("Misc", "hit marker", variables.misc.hitmarker);
 	variables.misc.hitsound = cfg.GetBoolValue("Misc", "hit sound", variables.misc.hitsound);
-	variables.misc.hitsound_int = cfg.SetLongValue("Misc", "hit sound type", variables.misc.hitsound_int);
+	variables.misc.hitsound_int = cfg.GetLongValue("Misc", "hit sound type", variables.misc.hitsound_int);
 
 	variables.misc.infduck = cfg.GetBoolValue("Misc", "infiniteduck", variables.misc.infduck);
 	variables.misc.bEdgeJump = cfg.GetBoolValue("Misc", "edgejump", variables.misc.bEdgeJump);

@@ -185,4 +185,5 @@ namespace visuals
 	void edgejumpindicator();
 	void edgebugindicator();
 	void thirdperson();
+	void watermark();
 }

@@ -140,7 +140,8 @@ void render::draw_circle(int x, int y, int r, int s, color col) {
 	}
 }
 
-void render::get_text_size(unsigned long font, std::string string, int &w, int &h) {
+void render::get_text_size(unsigned long font, std::string string, int &w, int &h) 
+{
 	std::wstring text = std::wstring(string.begin(), string.end());
 	const wchar_t* out = text.c_str();
 

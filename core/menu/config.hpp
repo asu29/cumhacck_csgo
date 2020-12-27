@@ -108,6 +108,7 @@ struct variables_t {
 		bool showimpacts = false;
 		bool watermark = false;
 		float clr_watermark[4]{ 1.0f,1.0f,1.0f,1.0f };
+		int watermark_mode = 1;
 	} visuals;
 	struct {
 		struct {
