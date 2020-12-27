@@ -557,7 +557,7 @@ void menu::draw()
 				zgui::text("this will always be a free piece of software ");
 				zgui::text("for anyone to use");
 				zgui::text(" ");
-				zgui::clickable_text("pls-use.me");
+				zgui::clickable_text("lexi.best");
 
 				zgui::end_groupbox();
 			}
