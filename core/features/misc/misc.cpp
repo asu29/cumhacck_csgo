@@ -1,5 +1,5 @@
 #include "../features.hpp"
-#include "xor.h"
+#include "../../../security/xor.h"
 #include "d3d/d3dx9math.h"
 #include "../../../security/cl_junkcode.hpp"
 #include "../../../dependencies/math/math.hpp"

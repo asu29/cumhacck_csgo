@@ -94,7 +94,8 @@ void chams::run(hooks::draw_model_execute::fn ofunc, IMatRenderContext* ctx, con
 						interfaces::render_view->set_blend(float(100 - variables.pl_mdl.chams.transparency) / 100.f);
 						material->set_material_var_flag(material_var_flags_t::material_var_ignorez, false);
 						interfaces::model_render->override_material(material);
-						if (variables.pl_mdl.chams.glow_overlay) {
+						if (variables.pl_mdl.chams.glow_overlay) 
+						{
 							ofunc(interfaces::model_render, ctx, state, info, matrix);
 							interfaces::render_view->modulate_color(variables.pl_mdl.chams.glow_clr);
 							modulate_shit_clr(mat_eso_glow, variables.pl_mdl.chams.glow_clr);

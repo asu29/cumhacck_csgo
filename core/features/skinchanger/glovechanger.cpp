@@ -1,5 +1,5 @@
 #include "../features.hpp"
-#include "xor.h"
+#include "../../../security/xor.h"
 #include "../../../security/cl_junkcode.hpp"
 
 

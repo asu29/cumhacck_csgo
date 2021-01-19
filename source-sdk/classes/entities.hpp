@@ -565,10 +565,9 @@ public:
 		return vec3_t{};
 	}
 
-	bool is_alive() {
+	bool is_alive() 
+	{
 		return health() > 0;
-		//return this->health() > 0 && this->life_state() == 0;
-//return health() > 0;
 	}
 
 
