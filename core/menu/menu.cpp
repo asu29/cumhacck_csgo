@@ -541,7 +541,7 @@ void menu::draw()
 				zgui::text("tsuda kageyu for minhook");
 				zgui::text("namazso for nskinz");
 				zgui::text("brofield for simpleini");
-				zgui::text("Search#3037 for help with jb");
+				zgui::text("clifton for help with jb");
 				zgui::text("random snippets from unknowncheats");
 				zgui::text("a few leaked sources");
 				zgui::text("everyone who submitted bug reports ");
@@ -550,7 +550,7 @@ void menu::draw()
 				zgui::end_groupbox();
 			}
 			zgui::next_column(244, 29);
-			zgui::begin_groupbox("drain#0001", { 235,140 - 18 });
+			zgui::begin_groupbox("lexi#0001", { 235,140 - 18 });
 			{
 				zgui::text("this was made for fun and my own education ");
 				zgui::text("into game hacking");

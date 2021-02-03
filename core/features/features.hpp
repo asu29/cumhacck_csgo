@@ -110,7 +110,8 @@ struct tick_info
 	matrix_t bone_matrix[128];
 };
 
-namespace backtracking {
+namespace backtracking 
+{
 	extern std::vector<tick_info> records[65];
 	extern int closest_player;
 	extern int closest_tick;
