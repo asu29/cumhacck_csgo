@@ -234,12 +234,10 @@ void misc::jumpbug(c_usercmd* cmd)
 
 	if (variables.misc.jumpbug && GetAsyncKeyState(variables.misc.jumpbugkey) && (csgo::local_player->flags() & (1 << 0)))
 	{
-		//g_Settings.bBhopEnabled = false;
 		int screenWidth, screenHeight;
 		interfaces::engine->get_screen_size(screenWidth, screenHeight);
 		if (unduck)
 		{
-			//g_Settings.didJumpBug = true;
 			cmd->buttons &= ~in_duck; // duck
 			cmd->buttons |= in_jump; // jump
 			unduck = false;
@@ -267,7 +265,6 @@ void misc::jumpbug(c_usercmd* cmd)
 
 			if (fag.flFraction != 1.f && fag.flFraction != 0.f)
 			{
-				//g_Settings.didJumpBug = true;
 				cmd->buttons |= in_duck; // duck
 				cmd->buttons &= ~in_jump; // jump
 				unduck = true;
@@ -294,7 +291,6 @@ void misc::jumpbug(c_usercmd* cmd)
 
 			if (fag.flFraction != 1.f && fag.flFraction != 0.f)
 			{
-				//g_Settings.didJumpBug = true;
 				cmd->buttons |= in_duck; // duck
 				cmd->buttons &= ~in_jump; // jump
 				unduck = true;
@@ -321,7 +317,6 @@ void misc::jumpbug(c_usercmd* cmd)
 
 			if (fag.flFraction != 1.f && fag.flFraction != 0.f)
 			{
-				//g_Settings.didJumpBug = true;
 				cmd->buttons |= in_duck; // duck
 				cmd->buttons &= ~in_jump; // jump
 				unduck = true;
@@ -329,7 +324,7 @@ void misc::jumpbug(c_usercmd* cmd)
 		}
 	}
 	else
-	{	//g_Settings.bBhopEnabled = true; 
+	{			
 		variables.misc.didJumpBug = false;
 	}
 }

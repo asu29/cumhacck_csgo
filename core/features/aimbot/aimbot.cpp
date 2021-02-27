@@ -6,8 +6,10 @@ aimbot_ctx_t aimbot::ctx;
 void aimbot::weapon_cfg(weapon_t* weapon) 
 {
 	junkcode::call();
+
 	ctx.hitbox_pos = vec3_t{ 0.0f, 0.0f, 0.0f };
-	if (weapon->is_pistol()) {
+	if (weapon->is_pistol()) 
+	{
 		ctx.enabled = variables.aimbot.pistols.enabled;
 		ctx.mode = variables.aimbot.pistols.mode;
 		ctx.hitpoint = variables.aimbot.pistols.hitpoint;
@@ -93,7 +95,8 @@ void aimbot::run(c_usercmd* cmd)
 	int closest_player = -1;
 	int health = ctx.pl->health();
 
-	for (int i = 1; i <= 64; i++) {
+	for (int i = 1; i <= 64; i++) 
+	{
 		auto player = reinterpret_cast<player_t*>(interfaces::entity_list->get_client_entity(i));
 		if (!player ||
 			player->dormant() ||

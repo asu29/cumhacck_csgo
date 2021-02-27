@@ -5,7 +5,7 @@
 #include "client_class.hpp"
 #include "../structs/animstate.hpp"
 #include "../../dependencies/utilities/netvars/netvars.hpp"
-#include "../../security/xor.h"
+#include <xor.h>
 
 enum data_update_type_t {
 	DATA_UPDATE_CREATED = 0,
@@ -290,7 +290,8 @@ public:
 	NETVAR("DT_BaseViewModel", "m_hOwner", m_howner, int);
 };
 
-class weapon_t : public entity_t {
+class weapon_t : public entity_t 
+{
 public:
 	NETVAR("DT_BaseCombatWeapon", "m_flNextPrimaryAttack", next_primary_attack, float);
 	NETVAR("DT_BaseCombatWeapon", "m_flNextSecondaryAttack", next_secondary_attack, float);
@@ -302,37 +303,71 @@ public:
 	NETVAR("DT_BaseAttributableItem", "m_iItemDefinitionIndex", item_definition_index, short);
 	NETVAR("DT_BaseCombatWeapon", "m_iEntityQuality", entity_quality, int);
 
-	weapon_info_t* get_weapon_data() {
+	weapon_info_t* get_weapon_data() 
+	{
 		return interfaces::weapon_system->get_weapon_data(this->item_definition_index());
 	}
 
-	bool is_sniper() {
-		return (this->item_definition_index() == WEAPON_AWP ||
-			this->item_definition_index() == WEAPON_SSG08);
+	bool is_sniper() 
+	{
+		return (this->item_definition_index() == WEAPON_AWP || 
+			this->item_definition_index() == WEAPON_SSG08 || 
+			this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_SNIPER_RIFLE);
 	}
 
-	bool is_pistol() {
+	bool is_pistol() 
+	{
 		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_PISTOL);
 	}
 
-	bool is_knife() {
+	bool is_rifle()
+	{
+		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_RIFLE);
+	}
+
+	bool is_lmg()
+	{
+		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_MACHINEGUN);
+	}
+
+	bool is_smg()
+	{
+		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_SUBMACHINEGUN);
+	}
+
+	bool is_shotgun()
+	{
+		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_SHOTGUN);
+	}
+
+	bool is_knife() 
+	{
 		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_KNIFE);
 	}
 
-	bool is_nade() {
+	bool is_nade() 
+	{
 		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_GRENADE);
 	}
 
-	bool is_c4() {
+	bool is_c4() 
+	{
 		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_C4);
 	}
 
-	bool is_taser() {
+	bool is_taser() 
+	{
 		return (this->item_definition_index() == WEAPON_TASER);
+	}
+
+	bool is_unknown()
+	{
+		return (this->get_weapon_data()->m_iWeaponType == cs_weapon_type::WEAPONTYPE_UNKNOWN || cs_weapon_type::WEAPONTYPE_PLACEHOLDER);
 	}
 };
 
-class animation_layer {
+class animation_layer 
+{
 public:
 	char  pad_0000[20];
 	// These should also be present in the padding, don't see the use for it though
