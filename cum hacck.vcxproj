@@ -54,7 +54,7 @@
     <OutDir>.\bin\</OutDir>
     <IntDir>.\intermediates\</IntDir>
     <LibraryPath>$(LibraryPath)</LibraryPath>
-    <IncludePath>E:\cheatenz\csgo\! cumhacck\cumming~\core\features\misc\d3d;E:\cheatenz\csgo\! cumhacck\cumming~\security;$(IncludePath)</IncludePath>
+    <IncludePath>C:\Users\lexi\Documents\codenz\cheatenz\csgo\! cumhacck\cumming~\core\features\misc\d3d;C:\Users\lexi\Documents\codenz\cheatenz\csgo\! cumhacck\cumming~\security;$(IncludePath)</IncludePath>
     <TargetName>cheat</TargetName>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>

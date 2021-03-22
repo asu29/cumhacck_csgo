@@ -224,7 +224,7 @@ bool __fastcall hooks::create_move::hook(void* ecx, void* edx, int input_sample_
 
 	if (variables.misc.bEdgeJump && GetAsyncKeyState(variables.misc.edgejumpkey) && unFlags & (1 << 0) && !(preFlags & (1 << 0))) 
 	{
-		cmd->buttons |= (in_jump); // jump
+		cmd->buttons |= (in_jump);
 	}
 
 	if (variables.misc.edgebug && !(unFlags & (1 << 0)) && preFlags & (1 << 0) && GetAsyncKeyState(variables.misc.edgebugkey))
@@ -301,9 +301,6 @@ void __stdcall hooks::paint_traverse::hook(unsigned int panel, bool force_repain
 {
 	junkcode::call();
 
-
-	
-
 	auto panel_to_draw = fnv::hash(interfaces::panel->get_panel_name(panel));
 	switch (panel_to_draw) 
 	{
@@ -366,9 +363,6 @@ bool __stdcall hooks::do_post_screen_effects::hook(int value)
 {
 	junkcode::call();
 
-	if (interfaces::engine->is_in_game() && interfaces::engine->is_connected() && csgo::local_player)
-		visuals::onDrawModelExecute();
-
 	return do_post_screen_effects_original(interfaces::clientmode, value);
 }
 
@@ -378,6 +372,14 @@ bool __stdcall hooks::game_events::hook(i_game_event* event)
 
 	return fire_game_event_original(interfaces::event_manager, event);
 }
+
+std::vector<const char*> smoke_materials =
+{
+	"particle/vistasmokev1/vistasmokev1_smokegrenade",
+	"particle/vistasmokev1/vistasmokev1_emods",
+	"particle/vistasmokev1/vistasmokev1_emods_impactdust",
+	"particle/vistasmokev1/vistasmokev1_fire",
+};
 
 void __stdcall hooks::draw_model_execute::hook(IMatRenderContext* ctx, const draw_model_state_t& state, const model_render_info_t& info, matrix_t* matrix) 
 {
@@ -390,6 +392,44 @@ void __stdcall hooks::draw_model_execute::hook(IMatRenderContext* ctx, const dra
 		return draw_model_execute_original(interfaces::model_render, ctx, state, info, matrix);
 	}
 	chams::run(draw_model_execute_original, ctx, state, info, matrix);
+
+	static bool NoSmoke = false;
+	static bool NoFlashReset = false;
+	i_material* flash = interfaces::material_system->find_material("effects\\flashbang", TEXTURE_GROUP_CLIENT_EFFECTS);
+	i_material* flashWhite = interfaces::material_system->find_material("effects\\flashbang_white", TEXTURE_GROUP_CLIENT_EFFECTS);
+
+	if (flash && flashWhite)
+	{
+		if (variables.visuals.noflash && !NoFlashReset)
+		{
+			flash->set_material_var_flag(material_var_no_draw, true);
+			flashWhite->set_material_var_flag(material_var_no_draw, true);
+
+			NoFlashReset = true;
+		}
+		else if (!variables.visuals.noflash && NoFlashReset)
+		{
+			flash->set_material_var_flag(material_var_no_draw, false);
+			flashWhite->set_material_var_flag(material_var_no_draw, false);
+
+			NoFlashReset = false;
+		}
+	}
+
+	if (variables.visuals.nosmoke && !NoSmoke)
+	{
+		for (auto mat : smoke_materials)
+			interfaces::material_system->find_material(mat, TEXTURE_GROUP_CLIENT_EFFECTS)->set_material_var_flag(material_var_no_draw, true);
+
+		NoSmoke = true;
+	}
+	else if (!variables.visuals.nosmoke && NoSmoke)
+	{
+		for (auto mat : smoke_materials)
+			interfaces::material_system->find_material(mat, TEXTURE_GROUP_CLIENT_EFFECTS)->set_material_var_flag(material_var_no_draw, false);
+
+		NoSmoke = false;
+	}
 }
 
 void __stdcall hooks::frame_stage_notify::hook(int frame_stage) 

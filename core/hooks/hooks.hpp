@@ -65,10 +65,4 @@ namespace hooks
 		using fn = bool (__thiscall*)(void*);
 		bool __fastcall hook(PVOID convar, int edx);
 	}
-	
-	namespace play_sound
-	{
-		using fn = void(__thiscall*)(void*);
-		void __fastcall hook(const char* pszSoundName);
-	}
 }

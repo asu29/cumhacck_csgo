@@ -8,31 +8,22 @@
 namespace misc 
 {
 	void bunny_hop(c_usercmd* cmd);
-	void hitmark();
-	void hitmarka(i_game_event* event);
-	void hitmarkb();
 	void clantag();
 	void ClanTagApply(const char* TagName);
 	void disable_post_processing();
 	void disable_shadow();
 	void remove_3dsky();
 	void auto_strafe(c_usercmd* user_cmd) noexcept;
-	void longjump(c_usercmd* cmd) noexcept;
 	void remove_bloom();
 	void jumpbug(c_usercmd* cmd);
 	void edgejump(c_usercmd* cmd);
-	void duckinair(c_usercmd* cmd);
 	void edgebug(c_usercmd* cmd);
 	void nade_predict();
 	void chatspam();
 	void showimpacts();
-	void OnPlaySound(const char* pszSoundName);
 	void disable_blur();
-	void preservekillfeed(bool roundStart);
-	void sv_pure();
 	void autopistol(c_usercmd* cmd);
-
-
+	void nopunch();
 
 	namespace hitmarker 
 	{
@@ -86,8 +77,6 @@ namespace chams
 	void run(hooks::draw_model_execute::fn ofunc, IMatRenderContext* ctx, const draw_model_state_t& state, const model_render_info_t& info, matrix_t* matrix);
 }
 
-
-
 struct tick_info
 {
 	tick_info()
@@ -138,7 +127,6 @@ namespace aimbot
 	int get_hitbox(int hitpoint);
 	int get_hitbox(player_t* player, matrix_t* matrix, vec3_t eye_pos);
 	void run(c_usercmd* cmd);
-	void targetlowhp();
 }
 
 struct fake_state_t 
@@ -173,15 +161,12 @@ namespace glovechanger
 	void run();
 }
 
-
-
 namespace visuals 
 {
 	void nightmode();
 	void speed();
 	void sniper_crosshair();
 	void keyStrokes();
-	void onDrawModelExecute();
 	void jumpbugindicator();
 	void edgejumpindicator();
 	void edgebugindicator();

@@ -178,6 +178,7 @@ struct variables_t {
 		bool sv_pure = false;
 		bool autopistol = false;
 		bool faststop = false;
+		bool nopunch = false;
 	} misc;
 	struct {
 		bool enabled = false;

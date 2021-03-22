@@ -395,3 +395,13 @@ void misc::autopistol(c_usercmd* cmd)
 		}
 	}
 }
+
+void misc::nopunch()
+{
+	if (!variables.misc.nopunch || !interfaces::engine->is_in_game())
+		return;
+
+	csgo::local_player->punch_angle(); NULL;
+	csgo::local_player->aim_punch_angle(); NULL;
+}
+

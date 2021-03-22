@@ -6,8 +6,6 @@
 #include "../security/cl_junkcode.hpp"
 
 
-
-
 unsigned long WINAPI initialize(void* instance) 
 {
     junkcode::call();
@@ -40,7 +38,8 @@ unsigned long WINAPI initialize(void* instance)
         hooks::initialize();
     }
 
-    catch (const std::runtime_error& error) {
+    catch (const std::runtime_error& error) 
+    {
         MessageBoxA(nullptr, error.what(), "cum hacck error!", MB_OK | MB_ICONERROR);
         FreeLibraryAndExitThread(static_cast<HMODULE>(instance), 0);
     }

@@ -152,57 +152,6 @@ void visuals::keyStrokes()
 	}
 }
 
-std::vector<const char*> smoke_materials = 
-{
-	"particle/vistasmokev1/vistasmokev1_smokegrenade",
-	"particle/vistasmokev1/vistasmokev1_emods",
-	"particle/vistasmokev1/vistasmokev1_emods_impactdust",
-	"particle/vistasmokev1/vistasmokev1_fire",
-};
-
-void visuals::onDrawModelExecute()
-{
-	junkcode::call();
-
-	static bool NoSmoke = false;
-	static bool NoFlashReset = false;
-	i_material* flash = interfaces::material_system->find_material("effects\\flashbang", TEXTURE_GROUP_CLIENT_EFFECTS);
-	i_material* flashWhite = interfaces::material_system->find_material("effects\\flashbang_white", TEXTURE_GROUP_CLIENT_EFFECTS);
-
-	if (flash && flashWhite)
-	{
-		if (variables.visuals.noflash && !NoFlashReset)
-		{
-			flash->set_material_var_flag(material_var_no_draw, true);
-			flashWhite->set_material_var_flag(material_var_no_draw, true);
-
-			NoFlashReset = true;
-		}
-		else if (!variables.visuals.noflash && NoFlashReset)
-		{
-			flash->set_material_var_flag(material_var_no_draw, false);
-			flashWhite->set_material_var_flag(material_var_no_draw, false);
-
-			NoFlashReset = false;
-		}
-	}
-
-	if (variables.visuals.nosmoke && !NoSmoke)
-	{
-		for (auto mat : smoke_materials)
-			interfaces::material_system->find_material(mat, TEXTURE_GROUP_CLIENT_EFFECTS)->set_material_var_flag(material_var_no_draw, true);
-
-		NoSmoke = true;
-	}
-	else if (!variables.visuals.nosmoke && NoSmoke)
-	{
-		for (auto mat : smoke_materials)
-			interfaces::material_system->find_material(mat, TEXTURE_GROUP_CLIENT_EFFECTS)->set_material_var_flag(material_var_no_draw, false);
-
-		NoSmoke = false;
-	}
-}
-
 void visuals::jumpbugindicator()
 {
 	junkcode::call();

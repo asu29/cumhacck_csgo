@@ -128,7 +128,6 @@ void menu::draw()
 				zgui::checkbox("remove 3d sky", variables.misc.remove_3dsky);
 				zgui::checkbox("remove bloom", variables.misc.remove_bloom);
 				zgui::checkbox("disable post processing", variables.misc.disable_post_processing);
-				//zgui::checkbox("disable menu blur", variables.misc.disable_blur);
 				zgui::end_groupbox();
 			}
 			zgui::begin_groupbox("chams", { 235,125 + 63 + 18 + 34 }); 
@@ -164,13 +163,9 @@ void menu::draw()
 				zgui::slider_int("viewmodel y", -10, 10, variables.misc.viewmodel[1]);
 				zgui::slider_int("viewmodel z", -10, 10, variables.misc.viewmodel[2]);
 				zgui::checkbox("clantag", variables.misc.clantag);
-			//	if (variables.misc.clantag == 1)
-			//		zgui::combobox("clantag type", { "animated", "static" }, variables.misc.clantag_type);
 				zgui::checkbox("chatspam", variables.misc.chatspam);
-				//zgui::checkbox("auto accept", variables.misc.autoaccept);
-				//zgui::checkbox("preserve killfeed", variables.misc.preservekillfeed);
-				//zgui::checkbox("force sv_pure", variables.misc.sv_pure);
 				zgui::checkbox("auto pistol", variables.misc.autopistol);
+				zgui::checkbox("no punch", variables.misc.nopunch);
 				zgui::checkbox("spectator list", variables.misc.speclist);
 				zgui::colorpicker("clr#speclist", variables.misc.clr_speclist, 202);
 				zgui::checkbox("watermark", variables.visuals.watermark);
@@ -196,18 +191,12 @@ void menu::draw()
 				zgui::checkbox("auto strafe", variables.misc.auto_strafe);
 				zgui::checkbox("infinite duck", variables.misc.infduck);
 				zgui::checkbox("edge jump", variables.misc.bEdgeJump);
-				//zgui::colorpicker("clr#ejclr", variables.visuals.clr_edgejumpindicator, 202);
 				if (variables.misc.bEdgeJump)
 					zgui::key_bind("edge jump key", variables.misc.edgejumpkey);
-				//zgui::checkbox("long jump", variables.misc.longjump);
-				//if (variables.misc.longjump)
-					//zgui::key_bind("long jump key", variables.misc.longjumpkey);
 				zgui::checkbox("jump bug", variables.misc.jumpbug);
-				//zgui::colorpicker("clr#jbclr", variables.visuals.clr_jumpbugindicator, 202);
 				if (variables.misc.jumpbug)
 					zgui::key_bind("jump bug key", variables.misc.jumpbugkey);
 				zgui::checkbox("edge bug", variables.misc.edgebug);
-				//zgui::colorpicker("clr#ebclr", variables.visuals.clr_edgebugindicator, 202);
 				if (variables.misc.edgebug) 
 				{
 					zgui::key_bind("edge bug key", variables.misc.edgebugkey);
