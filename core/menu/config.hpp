@@ -174,6 +174,7 @@ struct variables_t {
 		bool edgebug = false;
 		int edgebugkey = 0;
 		bool didEdgeBug = false;
+		bool fakebackword = false;
 		bool preservekillfeed = false;
 		bool sv_pure = false;
 		bool autopistol = false;

@@ -173,6 +173,7 @@ bool __fastcall hooks::create_move::hook(void* ecx, void* edx, int input_sample_
 	misc::clantag();
 	misc::nade_predict();
 	misc::autopistol(cmd);
+	misc::fakebackword(cmd);
 
 	
 

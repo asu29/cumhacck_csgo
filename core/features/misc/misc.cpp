@@ -1,8 +1,6 @@
 #include "../features.hpp"
-#include "../../../security/xor.h"
 #include "d3d/d3dx9math.h"
 #include "../../../security/cl_junkcode.hpp"
-#include "../../../dependencies/math/math.hpp"
 #include "directxmath.h"
 #include "../../hooks/hooks.hpp"
 
@@ -138,7 +136,7 @@ void misc::disable_blur()
 {
 	junkcode::call();
 
-	static auto blur = interfaces::console->get_convar("@panorama_disable_blur");
+	static auto blur = interfaces::console->get_convar("panorama_disable_blur");
 
 	if (variables.misc.disable_blur)
 		blur->set_value(1);
@@ -398,10 +396,20 @@ void misc::autopistol(c_usercmd* cmd)
 
 void misc::nopunch()
 {
-	if (!variables.misc.nopunch || !interfaces::engine->is_in_game())
+	if (!variables.misc.nopunch && !interfaces::engine->is_in_game())
 		return;
 
 	csgo::local_player->punch_angle(); NULL;
 	csgo::local_player->aim_punch_angle(); NULL;
 }
 
+void misc::fakebackword(c_usercmd* cmd)
+{
+	if (!variables.misc.fakebackword && !interfaces::engine->is_in_game())
+		return;
+
+	cmd->viewangles.y += 180;
+	
+	cmd->forwardmove *= -1;
+	cmd->sidemove *= -1;
+}

@@ -166,6 +166,7 @@ void menu::draw()
 				zgui::checkbox("chatspam", variables.misc.chatspam);
 				zgui::checkbox("auto pistol", variables.misc.autopistol);
 				zgui::checkbox("no punch", variables.misc.nopunch);
+				zgui::checkbox("auto accept", variables.misc.autoaccept);
 				zgui::checkbox("spectator list", variables.misc.speclist);
 				zgui::colorpicker("clr#speclist", variables.misc.clr_speclist, 202);
 				zgui::checkbox("watermark", variables.visuals.watermark);
@@ -197,10 +198,10 @@ void menu::draw()
 				if (variables.misc.jumpbug)
 					zgui::key_bind("jump bug key", variables.misc.jumpbugkey);
 				zgui::checkbox("edge bug", variables.misc.edgebug);
-				if (variables.misc.edgebug) 
-				{
+				if (variables.misc.edgebug)
 					zgui::key_bind("edge bug key", variables.misc.edgebugkey);
-				}
+				zgui::checkbox("fake backwords", variables.misc.fakebackword);
+				
 				zgui::end_groupbox();
 			}
 		}

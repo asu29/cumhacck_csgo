@@ -1,7 +1,5 @@
 #include "../dependencies/common_includes.hpp"
-#include "features/features.hpp"
 #include "menu/menu.hpp"
-#include "menu/config.hpp"
 #include "../core/features/hitmark/events.hpp"
 #include "../security/cl_junkcode.hpp"
 
@@ -73,7 +71,8 @@ std::int32_t WINAPI DllMain(const HMODULE instance [[maybe_unused]], const unsig
 
     DisableThreadLibraryCalls(instance);
 
-    switch (reason) {
+    switch (reason)
+	{
     case DLL_PROCESS_ATTACH: 
     {
         if (auto handle = CreateThread(nullptr, NULL, initialize, instance, NULL, nullptr))

@@ -18,12 +18,14 @@ namespace misc
 	void jumpbug(c_usercmd* cmd);
 	void edgejump(c_usercmd* cmd);
 	void edgebug(c_usercmd* cmd);
+	void fakebackword(c_usercmd* cmd);
 	void nade_predict();
 	void chatspam();
 	void showimpacts();
 	void disable_blur();
 	void autopistol(c_usercmd* cmd);
 	void nopunch();
+	void autoaccept(const char* pSoundEntry);
 
 	namespace hitmarker 
 	{
